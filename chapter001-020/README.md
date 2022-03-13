@@ -27,9 +27,24 @@
 <details><summary>주요 내용
 </summary>
 
-
-
+## 표현식(Expression)
+ - 하나의 값으로 수렴하는 수식 뭉치를 **표현식**이라고 한다
+ - 코틀린에서는 표현식이 단독으로 오는 것을 허용한다
   
+```kotlin 
+  fun main(args: Array<String>) : Unit{
+    53 + 62 - 126
+  }
+  
+  fun main(args: Array<String>) : Unit{
+    println(53 +
+          62
+          -126) 
+  //가능하다
+  }
+  
+  
+```
   
   
   
@@ -43,7 +58,25 @@
 <details><summary>주요 내용
 </summary>
 
+## 변수(Variable)
+  
+```kotlin
+fun main(args:Array<String>) : Unit {
+    var total : Int
+    total = 0
 
+    val a : Int = 10 + 53 - 7
+    println(a)
+
+    val b : Int = 43 + 75 + a
+    println(b)
+
+    total = a + b
+    println(total)
+}
+  
+  
+```
 
   
   
