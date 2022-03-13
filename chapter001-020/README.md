@@ -78,8 +78,20 @@ fun main(args:Array<String>) : Unit {
   
 ```
 
+- 식별자 규칙 
+
+ |형태|이름|
+ |---|---|
+ |anyVariableName | 낙타 표기법(Camel Case) | 
+ |AnyVariableName| 파스칼 표기법(Pascal Case) |
+ |any_variable_name| 뱀 표기법(Snake Case) | 
+ 
+- 코틀린은 **Camel Case를 주로 사용**한다 
+ 
+- 코틀린은 자바와 달리 원시(Primitive) 타입이 없다. 즉, 코틀린에서는 Int와 같은 기본 타입들도 모두 클래스이다
   
-  
+
+- var은 일반 변수, val은 final 변수(불변 변수라고 하며 Immutable Variable)이다
   
 </details>
 
@@ -92,9 +104,15 @@ fun main(args:Array<String>) : Unit {
 <details><summary>주요 내용
 </summary>
 
+## 리터럴의 타입
 
-
+```kotlin
+fun main(){
+    val variable = 10 + 12 - 5 // 자동으로 타입을 유추한다
+    println(variable)
+  }
   
+ ```
   
   
 </details>
