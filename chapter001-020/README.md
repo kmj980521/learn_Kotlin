@@ -3,7 +3,20 @@
 <details><summary>주요 내용
 </summary>
 
-
+  ## Hello, World!
+  
+- 클래스에서 완전히 독립된 함수를 가질 수 있으며 이를 **패키지 레벨 함수**라고 한다
+- 타입을 맨 끝에 적는다 
+  
+```kotlin
+  fun main(){
+    println("Hello World!")
+  }
+  
+  fun add(a : Int, b : Int) : Int {
+    return a+b
+  }
+```
 
 </details>
 
