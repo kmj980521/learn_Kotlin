@@ -110,10 +110,10 @@ fun main(args:Array<String>) : Unit {
 fun main(){
     val variable = 10 + 12 - 5 // 자동으로 타입을 유추한다
     println(variable)
-  }
+ }
   
  ```
-  
+- 변수를 선언과 동시에 초기화하는 경우에 한해, 저장하려는 표현식으로부터 **타입을 추론**한다. 그래서 : Int와 같이 자료형을 표현해주는 코드를 생략할 수 있다  
   
 </details>
 
@@ -128,9 +128,37 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+## 산술 연산자(Arithmetic Operator) 
 
+```kotlin
+  fun main(){
+    val num : Int = 15 -4 * 3
+    val num2 : Int = 65%7
+    val num3 : Double = 7.5/5 + 22.25
+    val num4 : Double = num/num2 + 0.7
 
+    println(num)
+    println(num2)
+    println(num3)
+    println(num4)
+}
+```  
   
+- `3/2 + 0.7` : 3과 2는 Int이기 때문에 1이 나오고 그 뒤에 0.7이 더해져 그때 Double이 된다
+  
+- 코틀린은 자바보다 더 **타입 체크에 엄격**하다 Double 타입의 변수에 Int 타입의 값을 저장할 수 없다  
+- 또한, Double 타입의 변수에는 Double 타입인 표현식만 저장이 가능하므로 표현식이 조금 수정되어야 한다 (Int.toDouble()도 가능하다)
+  
+``` kotlin
+  fun main(){
+    val number : Int = 10 
+    val num : Double = 15 + 7 / 2   //error
+    val num2 : Double = 15.0 +7 / 2   // ok
+    val num3 : Double = number.toDouble() + 7 / 2   //ok. 주의)number 자체가 변하는 것은 아니다
+  }
+```
+  
+
   
   
 </details>
@@ -147,10 +175,19 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+## 증감 연산자(Increment & Decrement Operator)
 
-
+```kotlin
+  fun main(){
+    var a = 10
+    var b = 5
+    println(a++ + b) // 15
+    println(a) // 11
+    println(--b) // 4
+}
   
-  
+```  
+ -  **--**와 **++**는 증감 연산자로 변수 값이 바뀌기 때문에 val이 아닌 var로 선언한다 
   
 </details>
 
