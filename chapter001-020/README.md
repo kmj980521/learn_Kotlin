@@ -406,6 +406,7 @@ fun main(){
 ## 문자열 안에 표현식의 값을 집어넣기 
 - **$ 키워트**를 사용하며, $ 뒤에 변수 이름을 적으면 해당 부분은 변수의 값으로 대체된다
 - $ 자체를 출력하고자 할 때는 \$를 대신 사용한다
+- 표현식의 값을 문자열에 포함하고 싶으면 ${표현식}으로 작성한다
   
 ```kotlin
   
@@ -431,8 +432,20 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+- **typealias 키워드**를 사용한다
+  
+## 타입 별명(Type Alias)
+  
+```kotlin
+  
+typealias Number = Int
 
-1
+fun main(){
+  val a : Number = 10
+  println(a)
+}
+  
+```  
   
   
   
@@ -446,9 +459,18 @@ fun main(){
 </summary>
 
 
-
+## 주석(Comment)
   
+```kotlin
   
+  fun main(){
+    // println(123) 
+    println(/* 이 부분은 컴파일러가 통째로 무시한다 */"Apple"/*이
+    부
+    분
+    도*/)
+} 
+```  
   
 </details>
 
@@ -462,7 +484,10 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
-
+## 배정 연산자(Assignment Operator)
+  
+- **= 키워트**
+- 연산자 우선 순위 : */%, +-, =
 
   
   
@@ -480,9 +505,25 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+## 문장(Statement)
 
-
+- 독립적으로 실행할 수 있는 코드 조각
+- 세미콜론을 사용하여 한 줄에 여러 문장을 적을 수 있다
   
+```kotlin
+  
+  fun main(){
+    val num : Int
+    num = 15
+
+    println(
+        num+7*3
+    )
+
+    val num2 : Int; num2 = 15; println(num2)
+}
+  
+```  
   
   
 </details>
@@ -499,8 +540,37 @@ fun main(){
 </summary>
 
 
-
+## 비교 연산자(Comparison Operator)
   
+|기호|사용 예|결과 값|
+|---|---|---|
+|==| a==b| a와 b가 같으면 true, 다르면 false|
+|!=|a!=b|a와 b가 다르면 true, 같으면 false|
+|>|a>b|a가 b보다 크면 true, 그렇지 않으면 false|  
+|<|a<b|a가 b보다 작으면 true, 그렇지 않으면 false|
+|>=|a>=b|a가 b보다 크거나 같으면 true, 그렇지 않으면 false|  
+|<=|a<=b|a가 b보다 작거나 같으면 true, 그렇지 않으면 false|  
+  
+  
+```kotlin
+  
+  fun main(){
+    var isRight : Boolean = (10 + 70) > 3 * 25
+    println(isRight) // true 
+
+    isRight = false
+    println(isRight) //false 
+
+    isRight = 30 == (10+20)
+    println(isRight) //true 
+
+    isRight = 0.00001f == 0.005f * 0.002f
+    println(isRight) //false
+}
+  
+```  
+  
+- 자바처럼 객체의 참조 값끼리 비교하려면, **===, !==** 를 사용한다  
   
   
 </details>
@@ -516,8 +586,13 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+## 논리 연산자(Logical Operator) 
 
-
+- a&&b : a와 b 모두 true면 결과 값은 true, 둘 중 하나라도 false면 결과 값은 false
+- a||b : a와 b 하나라도 true면 true, 둘 다 false면 false
+  
+  
+  
   
   
   
@@ -532,8 +607,13 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
-
-
+## 흐름 제어 - 조건문 if 
+  
+  
+```kotlin
+  
+  
+```  
   
   
   
@@ -549,7 +629,7 @@ fun main(){
 </summary>
 
 
-
+## 흐름 제어 - 조건문 if~else 
   
   
   
