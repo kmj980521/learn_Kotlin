@@ -3,7 +3,7 @@
 <details><summary>주요 내용
 </summary>
 
-
+## if와 else의 중첩
 
 </details>
 
@@ -14,9 +14,26 @@
 <details><summary>주요 내용
 </summary>
 
+## if~else를 표현식으로 사용하기 
 
-
+ ```kotlin
   
+  fun main(){
+
+    val value : Int = if(10>5)
+    {
+        println("10은 5보다 크다")
+        10
+    }
+    else
+    {
+        println("10은 5보다 크지 않다.")
+        5
+    }
+    println(value) //10 
+}
+  
+ ``` 
   
   
   
