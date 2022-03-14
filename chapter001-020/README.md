@@ -306,6 +306,17 @@ fun main(){
 
 ## 실수 타입의 함정
   
+```kotlin
+  
+  fun main(){
+    println(0.1f+0.1f+0.1f) //0.3
+    println(0.1f+0.1f+0.1f+0.1f+0.1f+0.1f+0.1f+0.1f+0.1f+0.1f) // 1.00000001 -> 엉뚱한 값이 나온다
+    println(0.1f*10) // 1.0
+}
+```  
+ 
+  - 실수 값은 2신수 유효숫자로 표현되기 때문에 **상황에 따라 정확한 값을 가리킬 수 없다**
+  
   
   
 </details>
@@ -320,7 +331,26 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+## 문자 타입
+  
+```kotlin
+  
+  fun main(args:Array<String>) : Unit {
+    var ch : Char = 'A'
+    println(ch) //A
 
+    ch = '\uAC00'
+    println(ch) //가
+
+    ch = '한'
+    println(ch.toInt()) //54620
+    println(ch.code) // -> code로 바뀌었다 
+}
+  
+```
+  
+ - 코틀린에서는 **유니코드(Unicode)** 를 사용한다
+ - 유니코드의 범위는 0~65535이다 
 
   
   
@@ -338,9 +368,31 @@ fun main(){
 </summary>
 
 
+## 문자열(String)
+  
+  ```kotlin
+  
+  fun main(){
+    var str: String = "Hello"
+    println(str) // Hello
 
+    str = str + "\nKotlin!"
+    println(str) // Hello\nKotlin
+
+    println(str[8]) //t
+
+    val num = 10 * 5 + 3
+    println(str + num) //Hello\nKotlin!53
+}
+  
+  ```
+  
+  - +연산자의 양 피연산자가 String 타입이면, 왼쪽의 문자열에 오른쪽의 문자열을 덧붙이는 concat 연산을 한다 
+  
+  `println("Great"[1]) ` : r이 출력된다
   
   
+  - String과 String이 아닌 값을 + 연산자로 연결하면, String이 아닌 값을 String으로 변환한 뒤 서로 합친다.
   
 </details>
 
@@ -351,9 +403,22 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
-
-
+## 문자열 안에 표현식의 값을 집어넣기 
+- **$ 키워트**를 사용하며, $ 뒤에 변수 이름을 적으면 해당 부분은 변수의 값으로 대체된다
+- $ 자체를 출력하고자 할 때는 \$를 대신 사용한다
   
+  ```kotlin
+  fun main(){
+    val a : Int = 10
+    val b = 20
+
+    println("a의 값: $a")
+    println("b의 값: $b")
+
+    println("a+b의 값 = ${a+b}")
+}
+  
+  ```
   
   
 </details>
