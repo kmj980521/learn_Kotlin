@@ -1,4 +1,4 @@
-# Chapter21
+# Chapter21 - if와 else의 중첩
 
 <details><summary>주요 내용
 </summary>
@@ -10,7 +10,7 @@
 ---
 
 
-# Chapter22
+# Chapter22 - if~else를 표현식으로 사용하기 
 <details><summary>주요 내용
 </summary>
 
@@ -48,7 +48,7 @@
 ---
 
 
-# Chapter23
+# Chapter23 - 흐름 제어 - 조건문 when
 <details><summary>주요 내용
 </summary>
 
@@ -92,7 +92,7 @@
 
 
 
-# Chapter24
+# Chapter24 - when을 표현식으로 사용하기 
 <details><summary>주요 내용
 </summary>
 
@@ -139,7 +139,7 @@
 
 
 
-# Chapter25
+# Chapter25 - 흐름 제어, 반복문 while
 <details><summary>주요 내용
 </summary>
 
@@ -158,7 +158,7 @@
 
 
 
-# Chapter26
+# Chapter26 - 흐름 제어, 반복문 do-while
 <details><summary>주요 내용
 </summary>
 
@@ -176,7 +176,7 @@
 
 
 
-# Chapter27
+# Chapter27 - 흐름 제어, continue 
 <details><summary>주요 내용
 </summary>
 
@@ -195,7 +195,7 @@
 
 
 
-# Chapter28
+# Chapter28 - 흐름 제어, break
 <details><summary>주요 내용
 </summary>
 
@@ -217,7 +217,7 @@
 
 
 
-# Chapter29
+# Chapter29 - 레이블(Label)
 <details><summary>주요 내용
 </summary>
 
@@ -262,7 +262,7 @@
 
 
 
-# Chapter30
+# Chapter30 - 함수(Function)
 <details><summary>주요 내용
 </summary>
 
@@ -311,7 +311,7 @@ fun myFunction() : Int{
 
 
 
-# Chapter31
+# Chapter31 - 개변수(Parameter)와 인수(Argument)
 <details><summary>주요 내용
 </summary>
 
@@ -344,7 +344,7 @@ fun getAverage(a: Int, b: Int) : Double{
 ---
 
 
-# Chapter32
+# Chapter32 - Unit 타입
 <details><summary>주요 내용
 </summary>
 
@@ -365,7 +365,7 @@ fun getAverage(a: Int, b: Int) : Double{
 ---
 
 
-# Chapter33
+# Chapter33 - 디폴트 인수
 <details><summary>주요 내용
 </summary>
 
@@ -410,7 +410,7 @@ fun getAverage(a: Int = 0, b : Int = 0, print : Boolean = false) : Double {
 ---
 
 
-# Chapter34
+# Chapter34 - 가변 인수
 <details><summary>주요 내용
 </summary>
 
@@ -479,7 +479,7 @@ fun getSumOf(vararg numbers : Int) : Int{
 ---
 
 
-# Chapter35
+# Chapter35 - 함수 오버로딩(Function Overloading)
 <details><summary>주요 내용
 </summary>
 
@@ -499,7 +499,7 @@ fun getSumOf(vararg numbers : Int) : Int{
 ---
 
 
-# Chapter36
+# Chapter36 - 지역 변수(Local Variable)와 전역 변수(Global Variable)
 <details><summary>주요 내용
 </summary>
 
@@ -530,7 +530,7 @@ fun getSumOf(vararg numbers : Int) : Int{
 ---
 
 
-# Chapter37
+# Chapter37 - 지역 변수와 전역 변수의 이름이 중복될 때
 <details><summary>주요 내용
 </summary>
 
@@ -567,7 +567,7 @@ fun func()
 ---
 
 
-# Chapter38
+# Chapter38 - 지역 변수와 다른 함수의 지역 변수가 중복될 때
 <details><summary>주요 내용
 </summary>
 
@@ -583,7 +583,7 @@ fun func()
 ---
 
 
-# Chapter39
+# Chapter39 - 지역 함수(Local Function)
 <details><summary>주요 내용
 </summary>
 
@@ -615,7 +615,7 @@ fun func()
 ---
 
 
-# Chapter40
+# Chapter40 - 메모리의 스택(Stack) 영역
 <details><summary>주요 내용
 </summary>
 
