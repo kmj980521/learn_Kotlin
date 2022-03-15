@@ -266,10 +266,42 @@
 <details><summary>주요 내용
 </summary>
 
+## 함수(Function)
+ 
+ - 함수 속에 들어있던 문장들은 순차적으로 실행되며 이를 **함수 호출**이라고 부른다
+ 
+ 
+```kotlin
+ 
+ fun 식별자() : 반환 타입 {
+  문장
+ }
+ 
+``` 
 
+ ```kotlin
+ 
+ fun main(){
+    println(myFunction())
+    println(myFunction()+10)
+}
 
-  
-  
+fun myFunction() : Int{
+    val a = 3
+    val b = 6
+    println("a:" + a + ", b: " + b)
+    return a+b 
+}
+ 
+ ```
+ 
+ - 문장이 하나뿐인 블록은 =를 이용하여 줄여쓸 수 있으며 이 때 retun은 반드시 생략해야 하며 = 오른쪽은 함수의 반환 타입과 일치하는 표현식이 와야 한다 
+ 
+ `fun function() : Double = 3.0 + 7`
+ 
+ - 더 나아가, 아예 함수 반환 타입까지 생략할 수 있다
+ 
+ `fun function() = 3.0 + 7`
   
 </details>
 
