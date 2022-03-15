@@ -349,9 +349,16 @@ fun getAverage(a: Int, b: Int) : Double{
 </summary>
 
 
-
+## Unit 타입
+ 
+ - 함수의 반환타입을 생략하면 자동으로 Unit이 된다
+ - println의 반환 타입도 Unit이다 
+ 
+ `fun celsiusToFash(celsius: Int) = println(celsius * 1.8 + 32)`
   
-  
+ - 자바의 void에 대응되는 개념이나 완전히 같은 것은 아니다
+ - void는 반환 값이 없음을 의미하는 특수 타입이지만, Unit은 **class 키워드로 정의된 일반 타입** 이다 
+ - Unit 타입을 반환하는 함수는, return을 생략한다고 해도 암묵적으로 Unit 타입의 객체를 retrun 하도록 되어 있고 그 Unit 객체는 **싱글톤 인스턴스** 이기 때문에 매번 객체를 생성하지는 않는다
   
 </details>
 
@@ -362,11 +369,42 @@ fun getAverage(a: Int, b: Int) : Double{
 <details><summary>주요 내용
 </summary>
 
+## 디폴트 인수
 
+ - 매개변수를 선언과 동시에 디폴트 값으로 초기화 
+ - 함수를 호출하는 부분에서 인수를 설정해줄 수도 있다
+ 
+```kotlin
+ 
+ fun main(){
+    println(getAverage(89,96))
+    getAverage(100,50,true)
+    println(getAverage(50))
+    getAverage(66,print = true)
+    getAverage(print = true)
+    getAverage(print=true, a = 10, b= 30)
+}
 
+fun getAverage(a: Int = 0, b : Int = 0, print : Boolean = false) : Double {
+    val result = (a+b) / 2.0
+    if(print)
+        println(result)
+    return result
+}
+ 
+``` 
   
-  
-  
+- 매개변수의 이름을 지정한 인수는 일반 인수들보다 항상 오른쪽에 있어야 한다 
+ 
+```kotlin
+ 
+ getAverage(print = true, 10, 30) // error
+ getAverage(10, print = true, 30) // error
+ 
+``` 
+ 
+ 
+ 
 </details>
 
 ---
@@ -376,13 +414,65 @@ fun getAverage(a: Int, b: Int) : Double{
 <details><summary>주요 내용
 </summary>
 
+## 가변 인수
 
+- 매개변수 앞에 **vararg 키워드** 를 붙인다  
+  
 
-  
-  
-  
+ ```kotlin
+ 
+ fun main(){
+    println(getSumOf(1,2,3,4,5,6,7)) // 28
+    println(getSumOf(32,57,12))      // 101
+    println(getSumOf())              // 0
+}
+
+fun getSumOf(vararg numbers : Int) : Int{
+    val size = numbers.size
+    var i = 0; var sum = 0
+
+    while(i<size)
+    {
+        sum+=numbers[i]
+        i+=1
+    }
+    return sum
+}
+ 
+```               
+                  
+ - 가변 인수는 일반 인수와 함께 쓸 수도 있다
+                  
+ `fun function(something: Char, vararg numbers: Int): Int`
+                  
+ - 이 함수의 호출은 이와 같다
+ 
+ `function(Char 타입 인수, N개의 Int 타입 인수) `
+                  
+ - 일반 인수가 가변 인수보다 오른쪽에 있으면 호출시 인수에 매개변수 이름을 붙여야 한다
+                  
+ `fun function(vararg numbers: Int, something: Char): Int `
+                  
+ - 이 함수의 호출은 이와 같다 
+               
+ `function(N개의 Int 타입 인수, something = Char 타입 인수)
+                  
+                  
+ ```kotlin
+                 
+    fun main(){
+          test(1,2,3,4,5,something = 'C')        // number에 [1,2,3,4,5]가 들어간다
+    }
+    fun test(vararg number : Int, something : Char ): Int
+       
+    }             
+                  
+                  
+ ```              
+                  
+ 
+ 
 </details>
-
 
 
 
