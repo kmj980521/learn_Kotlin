@@ -1,4 +1,4 @@
-# Chapter1
+# Chapter1 - Hello, World!
 
 <details><summary>주요 내용
 </summary>
@@ -23,7 +23,7 @@
 ---
 
 
-# Chapter2
+# Chapter2 - 표현식(Expression)
 <details><summary>주요 내용
 </summary>
 
@@ -54,7 +54,7 @@
 ---
 
 
-# Chapter3
+# Chapter3 - 변수(Variable)
 <details><summary>주요 내용
 </summary>
 
@@ -100,7 +100,7 @@ fun main(args:Array<String>) : Unit {
 
 
 
-# Chapter4
+# Chapter4 - 리터럴의 타입
 <details><summary>주요 내용
 </summary>
 
@@ -124,7 +124,7 @@ fun main(){
 
 
 
-# Chapter5
+# Chapter5 - 산술 연산자(Arithmetic Operator) 
 <details><summary>주요 내용
 </summary>
 
@@ -171,7 +171,7 @@ fun main(){
 
 
 
-# Chapter6
+# Chapter6 - 증감 연산자(Increment & Decrement Operator)
 <details><summary>주요 내용
 </summary>
 
@@ -198,7 +198,7 @@ fun main(){
 
 
 
-# Chapter7
+# Chapter7 - 비트 연산자(Bitwise Operator) 
 <details><summary>주요 내용
 </summary>
 
@@ -236,11 +236,11 @@ fun main(){
 
 
 
-# Chapter8
+# Chapter8 - 정수 타입과 실수 타입
 <details><summary>주요 내용
 </summary>
 
-## 정수 타입과 실수 타입
+##  - 정수 타입과 실수 타입
 
 |종류| 타입 | 용량(단위:Byte) | 저장 가능 범위 |
 |---|---|---|---|
@@ -299,7 +299,7 @@ fun main(){
 
 
 
-# Chapter9
+# Chapter9 - 실수 타입의 함정
 <details><summary>주요 내용
 </summary>
 
@@ -327,7 +327,7 @@ fun main(){
 
 
 
-# Chapter10
+# Chapter10 - 문자 타입
 <details><summary>주요 내용
 </summary>
 
@@ -363,7 +363,7 @@ fun main(){
 
 
 
-# Chapter11
+# Chapter11 - 문자열(String)
 <details><summary>주요 내용
 </summary>
 
@@ -399,12 +399,12 @@ fun main(){
 ---
 
 
-# Chapter12
+# Chapter12 - 문자열 안에 표현식의 값을 집어넣기 
 <details><summary>주요 내용
 </summary>
 
 ## 문자열 안에 표현식의 값을 집어넣기 
-- **$ 키워트**를 사용하며, $ 뒤에 변수 이름을 적으면 해당 부분은 변수의 값으로 대체된다
+- **$ 키워드**를 사용하며, $ 뒤에 변수 이름을 적으면 해당 부분은 변수의 값으로 대체된다
 - $ 자체를 출력하고자 할 때는 \$를 대신 사용한다
 - 표현식의 값을 문자열에 포함하고 싶으면 ${표현식}으로 작성한다
   
@@ -428,7 +428,7 @@ fun main(){
 ---
 
 
-# Chapter13
+# Chapter13 - 타입 별명(Type Alias)
 <details><summary>주요 내용
 </summary>
 
@@ -454,7 +454,7 @@ fun main(){
 ---
 
 
-# Chapter14
+# Chapter14 - 주석(Comment)
 <details><summary>주요 내용
 </summary>
 
@@ -480,7 +480,7 @@ fun main(){
 ---
 
 
-# Chapter15
+# Chapter15 - 배정 연산자(Assignment Operator)
 <details><summary>주요 내용
 </summary>
 
@@ -501,7 +501,7 @@ fun main(){
 ---
 
 
-# Chapter16
+# Chapter16 - 문장(Statement)
 <details><summary>주요 내용
 </summary>
 
@@ -535,7 +535,7 @@ fun main(){
 ---
 
 
-# Chapter17
+# Chapter17 - 비교 연산자(Comparison Operator)
 <details><summary>주요 내용
 </summary>
 
@@ -582,7 +582,7 @@ fun main(){
 ---
 
 
-# Chapter18
+# Chapter18 - 논리 연산자(Logical Operator) 
 <details><summary>주요 내용
 </summary>
 
@@ -603,7 +603,7 @@ fun main(){
 ---
 
 
-# Chapter19
+# Chapter19 - 흐름 제어, 조건문 if 
 <details><summary>주요 내용
 </summary>
 
@@ -624,7 +624,7 @@ fun main(){
 ---
 
 
-# Chapter20
+# Chapter20 - 흐름 제어, 조건문 if~else 
 <details><summary>주요 내용
 </summary>
 
