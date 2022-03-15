@@ -311,7 +311,7 @@ fun myFunction() : Int{
 
 
 
-# Chapter31 - 개변수(Parameter)와 인수(Argument)
+# Chapter31 - 매개변수(Parameter)와 인수(Argument)
 <details><summary>주요 내용
 </summary>
 
