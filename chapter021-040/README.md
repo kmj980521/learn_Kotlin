@@ -455,7 +455,7 @@ fun getSumOf(vararg numbers : Int) : Int{
                   
  - 이 함수의 호출은 이와 같다 
                
- `function(N개의 Int 타입 인수, something = Char 타입 인수)
+ `function(N개의 Int 타입 인수, something = Char 타입 인수)`
                   
                   
  ```kotlin
@@ -483,7 +483,9 @@ fun getSumOf(vararg numbers : Int) : Int{
 <details><summary>주요 내용
 </summary>
 
-
+## 함수 오버로딩(Function Overloading)
+ 
+- 이름이 같은 함수를 여러 개 선언하는 것 
 
   
   
@@ -502,10 +504,23 @@ fun getSumOf(vararg numbers : Int) : Int{
 </summary>
 
 
-
+## 지역 변수(Local Variable)와 전역 변수(Global Variable)
   
+ - **전역 변수** : 함수 밖에 선언한 변수이고 함수 호출이 끝나도 사라지지 않는다 
+ 
+ - **지역 변수** : 함수 안에 선언한 변수이고 블록 밖으로 나가면 사라진다
+ 
+ - **스코프(scope)** : 변수가 인식될 수 있는 범위
   
-  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 </details>
 
 
@@ -520,9 +535,28 @@ fun getSumOf(vararg numbers : Int) : Int{
 </summary>
 
 
+## 지역 변수와 전역 변수의 이름이 중복될 때
+ 
+ 
+```kotlin
+ 
+ var a = 5
 
-  
-  
+fun main(){
+    val a = 30
+    println(a) // 가까운 scope에 있는 30을 출력한다 
+    func()
+}
+fun func()
+{
+    println(a) // 5를 출력한다
+}
+ 
+``` 
+ 
+ - 가장 가까운 스코프의 변수를 출력한다
+ 
+
   
 </details>
 
@@ -537,9 +571,9 @@ fun getSumOf(vararg numbers : Int) : Int{
 <details><summary>주요 내용
 </summary>
 
+## 지역 변수와 다른 함수의 지역 변수가 중복될 때
 
-
-  
+ - 지역 변수 간에 스코프가 겹치지 않기 때문에 함수 간에 변수의 이름이 같아도 문제가 없다 
   
   
 </details>
@@ -554,8 +588,24 @@ fun getSumOf(vararg numbers : Int) : Int{
 </summary>
 
 
+## 지역 함수(Local Function)
+ 
+- **지역 함수** : 블록 안에 선언된 함수 
+ 
+```kotlin
+ 
+ fun main(){
+    fun printFomular(a: Int = 20, b: Int){
+        println(a * b + a - b)
+    }
 
-  
+    printFomular(73,1)
+    printFomular( b= 30)
+}
+ 
+``` 
+ 
+ 
   
   
 </details>
@@ -569,7 +619,11 @@ fun getSumOf(vararg numbers : Int) : Int{
 <details><summary>주요 내용
 </summary>
 
-
+## 메모리의 스택(Stack) 영역
+ 
+- **스택(Stack)** : 지역 변수가 저장되는 공간. 차곡차곡 쌓인다
+- 함수 호출 시 스택 영역에 해당 함수가 쌓이고 그 안의 변수들이 쌓이며 함수 호출 종료 시 스택 영역에서 사라진다
+- main 함수가 끝나면서 모든 지역 변수가 스택 영역에서 사라진다
 
   
   
