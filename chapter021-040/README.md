@@ -315,9 +315,28 @@ fun myFunction() : Int{
 <details><summary>주요 내용
 </summary>
 
+## 매개변수(Parameter)와 인수(Argument)
+ 
+- **매개변수(Parameter)** : 함수를 호출한 곳으로부터 값을 전달받을 때 사용
+- **인수(Argument)** : 매개변수에 저장되는 표현식
+ 
+- 매개변수를 선언할 때는 var이나 val 키워드를 붙이지 않는다. **매개변수는 무조건 val로 선언되므로 값을 수정할 수 없다**
 
+ ```kotlin
+ 
+ fun main(){
+    println(cToF(30))
+    println(getAverage(89,96))
+}
 
-  
+fun cToF(celsius: Int) : Double {
+    return celsius * 1.8 +32
+}
+fun getAverage(a: Int, b: Int) : Double{
+    return (a+b)/2.0
+}
+ 
+ ```
   
   
 </details>
