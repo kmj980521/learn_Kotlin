@@ -1,9 +1,25 @@
-# Chapter41
+# Chapter41 - 소스 파일 여러 개로 분리하기
 
-<details><summary>주요 내용
+<details><summary>주요 내용 
 </summary>
 
+## 소스 파일 여러 개로 분리하기
+  
+ - math.kt
+  
+ ```kotlin
+  
+  fun max(a : Int, b:Int) : Int = 
+    if (a>b) a else b 
+fun min(a : Int, b:Int) : Int = 
+    if (a<b) a else b 
 
+fun abs(num : Int) : Int = 
+    if (num>=0) num else - num
+  
+ ```
+  
+  
 
 </details>
 
