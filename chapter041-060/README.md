@@ -305,7 +305,7 @@ fun main(){
 ---
 
 
-# Chapter52
+# Chapter52 - 멤버 함수(Member Function)
 <details><summary>주요 내용
 </summary>
 
