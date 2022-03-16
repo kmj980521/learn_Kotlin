@@ -214,14 +214,15 @@ fun main(){
 
 
 
-# Chapter48
+# Chapter48 - 힙 영역의 존재 이유 
 <details><summary>주요 내용
 </summary>
 
 
-
+## 힙 영역의 존재 이유 
   
-  
+- 어느 블록에서 생성했던 간에, 블록을 빠져나와도 지워지지 않는다 
+- 인스턴스의 참조값을 활용할 때 두 개의 참조 변수가 하나의 객체를 가리키게 해서 **하나의 객체를 여러 참조 변수에서 공유하는 형태**로 사용할 수 있어 메모리 공간을 절약할 수 있다
   
 </details>
 
@@ -235,14 +236,15 @@ fun main(){
 
 
 
-# Chapter49
+# Chapter49 - 문자열간 + 연산 시 주의점
 <details><summary>주요 내용
 </summary>
 
+## 문자열간 + 연산 시 주의점
 
-
-  
-  
+ - 실제 문자열은 힙 영역에 생성되먀, String 변수는 문자열의 참조값을 저장하기 위한 공간만 갖고 있다. 
+ - 두 문자열을 이어 붙이면 원래 갖고 있던 문자열에 새로운 문자열이 덧붙여지는 게 아니라, 기존의 문자열은 그대로 남고 합쳐진 문자열이 새로 생성된다  
+ - 그렇다면 기존의 문자열은 그대로 남아있을까? 
   
 </details>
 
@@ -252,14 +254,14 @@ fun main(){
 
 
 
-# Chapter50
+# Chapter50 - 가비지 컬렉션(Garbage Collection)
 <details><summary>주요 내용
 </summary>
 
+## 가비지 컬렉션(Garbage Collection)
 
-
-  
-  
+- 미아가 된 객체들이 메모리 공간이 부족해질 정도까지 쌓이면 가비지 컬렉션 기능에 의해 소멸되고 메모리를 효율적으로 사용하게 한다   
+- **프리징** : 가비지 컬렉션이 일어날 때 삭제할 미아 객체들을 탐색해야 하기 때문에 순간적으로 프로그램이 멈추는 현상  
   
 </details>
 
@@ -269,12 +271,32 @@ fun main(){
 
 
 
-# Chapter51
+# Chapter51 - ===, !== 연산자
 <details><summary>주요 내용
 </summary>
 
+## ===, !== 연산자
 
+- **===** : 두 참조 변수가 같은 객체를 가리킬 때 true, 아니라면 false 
+- **!==** : 두 참조 변수가 다른 객체를 가리킬 때 true, 아니라면 false 
+  
+```kotlin
+  
+  fun main(){
+    var a : Person = Person()
+    var b : Person = a
 
+    println(a===b) // true
+    b = Person()
+    println(a===b) // false
+    println(a!==b) // true
+}
+  
+- 코틀린에서의 == 연산자는 자바의 equals 메서드를 호출한 것과 같은 효과를 지닌다  
+  
+  
+```  
+  
   
   
   
@@ -287,38 +309,97 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
-
-
+## 멤버 함수(Member Function)
   
+- **멤버 함수** : 클래스에 내장된 함수  
+- 특정 클래스와 강한 연관이 있는 함수는 아예 클래스 안으로 내장시킨다
+- 멤버 함수가 객체의 **동작 역할** 을 한다
   
+```kotlin
+  
+  class ch052 {
+    var name : String = ""
+    var date = ""
+    var area = 0
+
+    fun print():Unit {
+        println("name = ${this.name}")
+        println("date = ${this.date}")
+        println("area = ${this.area}")
+    }
+}
+  
+```  
   
 </details>
 
 ---
 
 
-# Chapter53
+# Chapter53 - 프로퍼티와 멤버 함수의 매개변수 이름이 중복될 때
 <details><summary>주요 내용
 </summary>
 
+## 프로퍼티와 멤버 함수의 매개변수 이름이 중복될 때
 
+```kotlin
+  
+  class ch053{
+    var num : Int = 50
 
+    fun print(num : Int)
+    {
+        println(num) // 100 
+        println(this.num) // 50
+    }
+}
+
+fun main(){
+    val a = ch053()
+    a.print(100)
+}
   
+```  
   
+- 중복된 값이 존재한다면 **this 키워드** 를 사용하여 구분한다  
   
 </details>
 
 ---
 
 
-# Chapter54
+# Chapter54 - 생성자(Constructor)와 초기화(Initializer) 블록
 <details><summary>주요 내용
 </summary>
 
-
+## 생성자(Constructor)와 초기화(Initializer) 블록
 
   
+-  `class 클래스 이름 constructor(생성자의 매개변수 선언) {...}`
+- **init 블록** 내부에서 생성자의 매개변수를 사용한다
+- 코틀린에서는 생성자 정의부를 아예 클래스 이름에 합쳐버렸다   
+
+```kotlin
   
+  class Subway constructor(name:String, line:Int){
+    val name : String 
+    val line : Int 
+    
+    init{
+        this.name = name 
+        this.line = line 
+    }
+}
+  
+  fun main(){
+    val subway1 : Subway = Subway("신분당선",1)
+    println(subway1.line)
+}
+  
+  
+```  
+  
+ - constructor 키워드를 생략해도 상관 없다 
   
 </details>
 
@@ -328,12 +409,34 @@ fun main(){
 ---
 
 
-# Chapter55
+# Chapter55 - init 블록 나누어 쓰기
 <details><summary>주요 내용
 </summary>
 
+## init 블록 나누어 쓰기 
 
-
+- 인스턴스가 생성된다고 해서 init 블록이 곧장 실행되는 것은 아니다.
+- **위에서부터 순서대로** 프로퍼티의 선언 및 초기화문과, init 블록이 실행된다
+  
+ ```kotlin
+  
+  class Size(width:Int, height: Int){
+    val width : Int 
+    val height : Int 
+    
+    init{
+        this.width = width
+        this.height = height
+    }
+    val area : Int 
+    
+    init{
+        this.area = this.width * this.height
+    }
+}
+  
+ ``` 
+  
   
   
   
@@ -346,14 +449,18 @@ fun main(){
 ---
 
 
-# Chapter56
+# Chapter56 - 생성자와 프로퍼티 한번에 쓰기
 <details><summary>주요 내용
 </summary>
 
+## 생성자와 프로퍼티 한번에 쓰기
 
-
+``` kotlin
   
+  class Car(val name: String, val speed: Int = 0)
   
+```  
+- 생성자 매개변수 앞에 val이나 var 키워드를 붙이면, 동일한 이름의 프로퍼티가 같이 선언된다  
   
 </details>
 
