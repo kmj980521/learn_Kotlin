@@ -1,6 +1,6 @@
 # Chapter41 - 소스 파일 여러 개로 분리하기
 
-<details><summary> **주요 내용** 
+<details><summary> 주요 내용
 </summary>
 
 ## 소스 파일 여러 개로 분리하기
