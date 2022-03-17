@@ -471,7 +471,7 @@ fun main(){
 ---
 
 
-# Chapter57
+# Chapter57 - 보조 생성자(Secondary Constructor)
 <details><summary>주요 내용
 </summary>
 
@@ -535,7 +535,7 @@ fun main(){
 ---
 
 
-# Chapter58
+# Chapter58 - 프로퍼티와 Getter/Setter
 <details><summary>주요 내용
 </summary>
 
@@ -543,8 +543,11 @@ fun main(){
 
 - 특정 객체의 프로퍼티에 특정 값을 대입하면, 이 프로퍼티에 해당하는 setter가 호출된다  
 - **field 식별자** : 실제로 값이 저장되는 프로퍼티 속의 변수를 나타내는 특수 식별자   
+- val 프로퍼티는 초기 값이 주어지면 더 이상 값을 변경할 수 없기 때문에 Getter만 존재한다 
+- 프로퍼티에 **디폴트 Getter/Setter 가 포함되어 있따 **  
 
--   
+  
+   
  
 |용어|의미|
 |---|---|
@@ -581,12 +584,51 @@ fun main(){
 ---
 
 
-# Chapter59
+# Chapter59 - 연산자 오버로딩(Operator Overloading)
 <details><summary>주요 내용
 </summary>
 
+## 연산자 오버로딩(Operator Overloading)
 
+- 연산자 오버로딩을 정의해 두 객체끼리의 덧셈을 구현할 수 있다  
 
+- 멤버 함수 정의문 앞에 **operator를 붙인다** : 인스턴스 간에 연산자를 사용했을 때 이 멤버 함수를 대신 호출해달라는 의미이다   
+
+  
+```kotlin
+  
+  class Point(var x : Int = 0, var y : Int = 0)
+{
+    operator fun plus(other: Point) : Point{
+        return Point(x+other.x, y+other.y)
+    }
+    operator fun minus(other: Point) : Point{
+        return Point(x-other.x, y-other.y)
+    }
+    operator fun times(number : Int) : Point {
+        return Point(x * number, y * number)
+    }
+    operator fun div(number : Int) : Point {
+        return Point(x / number, y/number)
+    }
+    fun print(){
+        println("x : $x, y : $y")
+    }
+}
+fun main(){
+    val pt1 = Point(3,7)
+    val pt2 = Point(2,-6)
+
+    val pt3 = pt1 + pt2
+    val pt4 = pt3 * 6
+    val pt5 = pt4 / 3
+    pt3.print()
+    pt4.print()
+    pt5.print()
+}
+  
+```  
+  
   
   
   
@@ -597,14 +639,43 @@ fun main(){
 ---
 
 
-# Chapter60
+# Chapter60 - 번호 붙은 접근 연산자(Indexed Access Operator) []
 <details><summary>주요 내용
 </summary>
 
 
+## 번호 붙은 접근 연산자(Indexed Access Operator) []
+  
+- **Getter/Setter를 operator 키워드를 사용해 재정의 ** 한다. (when을 사용한다)
+ 
+```kotlin
+  
+  class Pers(var name : String, var birthday : String)
+{
+    operator fun get(position: Int) : String {
+        return when(position)
+        {
+            0 -> name
+            1 -> birthday
+            else -> "알 수 없음"
+        }
+    }
+    operator fun set(position: Int, value : String){
+        when(position)
+        {
+            0 -> name = value
+            1 -> birthday = value 
+        }
+    }
+}
+  
+```  
 
+- []연산자에는 여러 개의 피연산자를 지정할 수 있다. 
+
+`pers[1,2,3] -> pers.get(1,2,3)` 
   
-  
+`pers[1,2] = "J" -> pers.set(1,2,"J")`
   
 </details>
 
