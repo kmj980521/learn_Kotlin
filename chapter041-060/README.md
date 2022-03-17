@@ -475,9 +475,55 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
-
-
+## 보조 생성자(Secondary Constructor)
   
+- **주 생성자(Primary Constructor)** : 클래스 이름 옆에 오는 생성자 
+- **보조 생성자(Secondary Constructor)** : 클래스 내부에 오는 생성자 
+
+ ```kotlin
+  
+  class 클래스 이름 constructor(매개변수)
+  {
+    constructor(매개변수):this(인수)
+    {
+      ....
+    }
+  }
+  
+ ```
+  
+ ```kotlin
+  
+  class Time(val second:Int) // second는 공통적으로 가진다
+{
+    init{
+        println("init 실행")
+    }
+    constructor(minute:Int,second:Int) : this(minute*60 + second){
+        println("보조 생성자 1 실행 중 ")
+    }
+    constructor(hour:Int,minute:Int,second:Int) : this(hour*60+minute,second){
+        println("보조 생성자 2 실행 중")
+    }
+    init {
+        println("또 다른 init 블록 실행")
+    }
+}
+fun main(){
+    println("${Time(15,6).second } 초")
+    println("${Time(6,3,17).second} 초")
+}
+  
+ ``` 
+  
+  - 여기에서 this는 이 클래스에 포함된 또 다른 생성자를 호출하는 문법 
+  
+ ![image](https://user-images.githubusercontent.com/61898890/158727225-5bd81105-ee4b-4e34-b53e-ff2f2b57172f.png)
+
+ - 2번째 경우는 보조 생성자 2를 호출, 보조 생성자 2에서 보조 생성자 1을 호출, 보조 생성자 1에서 주 생성자를 호출하기 때문에 이와 같은 과정이 된다  
+  
+ - 보조 생성자는 다시 주 생성자를 먼저 호출하므로,  **궁극적으로는 주 생성자가 가장 먼저 호출되게 한다** 
+ 
   
   
 </details>
@@ -493,8 +539,38 @@ fun main(){
 <details><summary>주요 내용
 </summary>
 
+## 프로퍼티와 Getter/Setter
 
+- 특정 객체의 프로퍼티에 특정 값을 대입하면, 이 프로퍼티에 해당하는 setter가 호출된다  
+- **field 식별자** : 실제로 값이 저장되는 프로퍼티 속의 변수를 나타내는 특수 식별자   
 
+-   
+ 
+|용어|의미|
+|---|---|
+|Field|실제로 데이터가 저장되는 공간|
+|Getter| 저장된 값을 읽으려고 할 때 호출되는 함수|
+|Setter| 값을 저장하려고 할 때 호출되는 함수|
+  
+```kotlin
+  
+  class Per{
+    var age : Int = 0
+    get(){
+        return field
+    }
+    set(value){
+        field = if(value>0) value else 0
+    }
+}
+fun main(){
+    val per : Per = Per()
+
+    per.age = -30
+    println(per.age) // 0
+}
+
+```  
   
   
   
