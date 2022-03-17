@@ -174,7 +174,7 @@ fun main(){
 
 
 
-# Chapter66
+# Chapter66 - 오버라이딩(Overriding)
 <details><summary>주요 내용
 </summary>
 
@@ -316,13 +316,36 @@ fun main(){
 
 
 
-# Chapter69
+# Chapter69 - 클래스를 상속하는 객체
 <details><summary>주요 내용
 </summary>
 
 
-
+## 클래스를 상속하는 객체 
   
+```kotlin
+  
+  open class a1(val name: String, val age: Int)
+{
+    open fun print(){
+        println(name)
+        println(age)
+    }
+}
+
+fun main(){
+    val custom : a1 = object : a1("Alan",23)
+    {
+        override fun print(){
+            println("It's a object")
+        }
+    }
+    custom.print()
+}
+  
+```  
+  
+- 클래스 없이 객체를 만들면서 상속을 했으므로 이때의 상속은 1회용이 된다   
   
   
 </details>
@@ -333,12 +356,50 @@ fun main(){
 
 
 
-# Chapter70
+# Chapter70 - Any 클래스
 <details><summary>주요 내용
 </summary>
 
 
+## Any 클래스
+  
+ - 어떤 클래스가 아무 클래스도 상속하지 않으면 **자동으로 Any 라는 클래스를 상속한다**
+ 
+ - 모든 코틀린 클래스들은 Any 클래스를 상속한다는 것이 보장된다 
+  
+ - Any Class
+  
+ ```kotlin
+  
+  open operator fun equals(other: Any?): Boolean // == 연산자를 오버로딩하는 멤버 변수 
+  open fun hashCode(): Int // 객체 고유의 해시코드를 반환하는 멤버 함수 
+  open fun toString(): String // 객체의 내용을 String 타입으로 변환하는 멤버 함수 
+  
+ ``` 
+  
 
+ ```kotlin
+  
+  class Building(var name:String = "", val date: String ="", val area : Int = 0 )
+{
+    override fun toString(): String =
+        "이름:${this.name}\n"+
+        "건축일자:${this.date}\n"+
+        "면적:${this.area}"
+
+}
+
+fun main(){
+    val building = Building("코틀린","20101010",area=100)
+    printObject(building)
+    println(building)
+}
+fun printObject(any:Any)
+{
+    println(any.toString())
+}
+  
+ ``` 
   
   
   
