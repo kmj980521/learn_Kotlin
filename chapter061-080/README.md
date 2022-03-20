@@ -413,12 +413,14 @@ fun printObject(any:Any)
 
 
 
-# Chapter71
+# Chapter71 - 예외(Exception)
 <details><summary>주요 내용
 </summary>
 
 
-
+## 예외(Exception)
+ 
+- 프로그램 실행 중 예상치 못하게 발생한 상황
   
   
   
@@ -427,12 +429,36 @@ fun printObject(any:Any)
 ---
 
 
-# Chapter72
+# Chapter72 - 예외 처리
 <details><summary>주요 내용
 </summary>
 
+## 예외 처리
 
+- try~catch~finally 블록을 사용한다 
 
+- try 블록에는 예외가 발생할 가능성이 있는 부분을 감싸준다
+
+- catch 블록에는 예외가 발생했을 때 대신 실행할 코드를 지정한다 
+  
+- finally 블록에는 예외 발생 여부와 상관 없이 무조건 실행되는 블록이다
+  
+```kotlin
+  
+  fun main(){
+    try{
+        val str= "abcd"
+        val num = str.toInt()
+    }catch (e: NumberFormatException){
+        println(e)
+    }finally{
+        println("finally")
+    }
+}
+ 
+```
+  
+![image](https://user-images.githubusercontent.com/61898890/159156778-ae3ce6c6-0bcd-4f5a-a244-dd288df2a5d8.png)
   
   
   
@@ -441,84 +467,70 @@ fun printObject(any:Any)
 ---
 
 
-# Chapter73
+# Chapter73 - 예외 던지기
 <details><summary>주요 내용
 </summary>
 
+## 예외 던지기 
 
+- `throw Throwable타입 표현식`   
+  
+```kotlin
+  
+      try{
+        something()
+    }catch(e:Exception){
+        println(e.message)
+    }
+}
+fun something(){
+    val num1 = 10
+    val num2 = 0
+    div(num1, num2)
+}
 
+fun div(a:Int, b:Int) : Int
+{
+    if(b==0)
+        throw Exception("DivisionError")
+    return a/b
+}
   
+``` 
   
+- 코틀린은 throws 키워드를 제거해 예외 처리는 필수가 아닌 옵션으로 했다   
   
 </details>
 
 ---
 
 
-# Chapter74
+# Chapter74 - Nothing 타입
 <details><summary>주요 내용
 </summary>
 
+## Nothing 타입
 
+- **Nothing 타입** : 실행 흐름이 도달할 수 없는 구역  
+  
+```kotlin
+  
+  fun throwing(): Nothing = throw Exception()
 
+fun main(){
+    println("start")
+    val i : Int = throwing()
+    print(i)
+}
+  
+```  
   
   
+- thorw Exception()은 Nothing 타입의 표현식이기 때문에 if-else 블록이 Int 타입의 표현식으로 인식된다. 만약 throw Exception 부분이 표현식이 아니었다면, else 블록의 타입이 Unit이 되어버리므로 if-else를 표현식으로 쓸 수 없게 된다.
   
-</details>
-
-
-
-
----
-
-
-# Chapter75
-<details><summary>주요 내용
-</summary>
-
-
-
-  
-  
-  
-</details>
-
-
-
-
-
----
-
-
-# Chapter76
-<details><summary>주요 내용
-</summary>
-
-
-
-  
-  
+- **Nothing 타입은 throw를 표현식으로 쓸 수 있게 하기 위한 장치**
   
 </details>
-
-
-
-
-
----
-
-
-# Chapter77
-<details><summary>주요 내용
-</summary>
-
-
-
-  
-  
-  
-</details>
-
 
 
 
@@ -526,12 +538,188 @@ fun printObject(any:Any)
 ---
 
 
-# Chapter78
+# Chapter75 - Nullable 타입과 null
+<details><summary>주요 내용
+</summary>
+
+## Nullable 타입과 null
+
+  - 타입 이름 뒤에 **? 키워드** 를 붙이면 변수를 Nullable하게 만들 수 있다
+  - **Nullable** : null 값을 지정할 수 있는 변수 
+  
+  - null은 Nothing? 타입의 표현식이다
+  
+  - Byte, Short, Int, Long, Float, Double, Char, Boolean 타입 뒤에 ?를 붙이면 그 변수는 **참조 변수**가 된다
+  
+  - 코틀린에서는 Nullable 타입이 아니면 null을 지정할 수 없다
+  
+  ```kotlin
+  
+  fun main(){
+    var num : Int? = null
+    num = 10
+    num = null
+  }
+  
+  ```
+  
+  
+</details>
+
+
+
+
+
+---
+
+
+# Chapter76 - 안전한 호출 연산자(Safe Call Operator) ?.
+<details><summary>주요 내용
+</summary>
+
+## 안전한 호출 연산자(Safe Call Operator) ?.
+  
+- Nullable한 참조 변수의 프로퍼티와 멤버 함수에 접근하려면,   **. 대신 ?.** 연산자를 반드시 사용해야 한다
+
+- `참조 변수?.프로퍼티` : 참조 변수가 null이면 이 표현식이 null 값을 갖게 된다 
+  
+- `참조 변수?.멤버 함수()` : 참조 변수가 null이면 멤버 함수를 호출하지 않고 표현식은 null이 된다
+  
+```kotlin
+  
+  fun main(){
+    var obj:Building? = null
+    println(obj?.toString()) // 표현식의 값은 null, 타입은 Unit?이 된다
+    obj?.name = "건물" // Getter/Setter이나 null이기 때문에 위와 비슷하게 작동한다
+
+    obj = Building()
+    obj?.name = "서울 월드컵 경기장"
+    obj?.date = "2001년 11월 10일"
+    obj?.area = 21_6712
+    println(obj?.toString())
+}
+  
+```  
+  
+  
+  
+  
+</details>
+
+
+
+
+
+---
+
+
+# Chapter77 - Not-null 단정 연산자(Not-null Assertion Operator) !!
+<details><summary>주요 내용
+</summary>
+
+## Not-null 단정 연산자(Not-null Assertion Operator) !!
+
+- **!! 연산자** : Nullable 타입을 Not-null 타입으로 강제로 캐스팅한다 
+  
+```kotlin
+  
+  fun main(){
+    var obj: Building? = Building()
+    obj!!.name = "서울시장" // obj는 null이 아닐 것이다! 라고 단정을 지음
+    println(obj!!.name)
+
+    obj = null
+    print(obj!!.toString())
+}
+  
+```  
+  
+![image](https://user-images.githubusercontent.com/61898890/159159089-1dce38f3-96cc-4ff4-998d-6d1552045621.png)
+  
+- null이면 NullPointerException이 발생한다  
+  
+</details>
+
+
+
+
+
+---
+
+
+# Chapter78 - 엘비스 연산자(Elvis Operator) ?:
+<details><summary>주요 내용
+</summary>
+
+## 엘비스 연산자(Elvis Operator) ?:
+
+- **왼쪽의 피연산자가 null이 아니면 그 값을 그대로 쓰고, null이면 우측의 피연산자로 대체한다**  
+  
+``` kotlin
+  
+  fun main(){
+    val number: Int? = null // number는 nullable
+    println(number ?: 0)
+
+    val number2: Int? = 15
+    println(number2 ?: 0)
+}  
+  
+- 코틀린의 간편함  
+  
+```java  
+  
+  String str;
+  ....
+  return (str != null) ? str : "Hello";
+  
+```  
+  
+```kotlin
+  
+ return str ?: "Hello" 
+  
+``` 
+  
+  
+</details>
+
+
+
+---
+
+
+# Chapter79 - 스마트 캐스팅
 <details><summary>주요 내용
 </summary>
 
 
+  
+## 스마트 캐스팅 
 
+- **스마트 캐스팅(Smart Casting)** : 특정 조건을 만족하는 경우, 컴파일러는 변수의 타입을 다른 타입으로 자동 캐스팅  
+  
+```kotlin
+  
+  fun main(){
+    val number:Int ? = null
+    val number2 = 1225
+
+    checkNull(number)
+    checkNull(number2)
+}
+fun checkNull(any:Any?){
+    if(any==null)
+    {
+        println("Null값")
+        return
+    }
+    println(any.toString()) // 위의 if를 통과하면 null이 아닐 것이라 완벽하게 추론해낼 것이라 ?.을 사용하지 않아도 된다!
+}
+  
+```  
+  
+- 위의 if를 통과하면 null이 아닐 것이라 완벽하게 추론해낼 것이라 ?.을 사용하지 않아도 된다!
   
   
   
@@ -542,28 +730,46 @@ fun printObject(any:Any)
 ---
 
 
-# Chapter79
+# Chapter80 - is 연산자
 <details><summary>주요 내용
 </summary>
 
+## is 연산자
 
-
+- 참조 변수가 **실제로 가리키고 있는 객체의 타입** 을 알아낸다   
   
+- 코틀린의 is 연산자는 자바의 instanceof에 해당한다 
   
+```kotlin
   
-</details>
+  fun main(){
+    val person: Person = Student("Mark Zuckerberg", 33, 20171225)
+    println("${person is Person}") // true 
+    println("${person is Student}") // true 
+    println("${person is Professor}") // false 
 
 
-
----
-
-
-# Chapter80
-<details><summary>주요 내용
-</summary>
-
-
-
+    val person2: Person = Professor("Kim", 48)
+    println("${person2 is Person}") // true 
+    println("${person2 is Student}") // false 
+    println("${person2 is Professor}") // true
+}
+  
+```  
+ 
+- is와 when의 활용 
+  
+```kotlin
+  
+  val person:Person
+    ... 
+    when(person){
+        is Person -> {}
+        is Student -> {}
+        is Professor -> {}
+    }
+  
+```  
   
   
   
