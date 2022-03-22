@@ -698,7 +698,7 @@ fun main(args:Array<String>)
 ---
 
 
-# Chapter100
+# Chapter100 - 내부 클래스(Inner Class)
 <details><summary>주요 내용
 </summary>
 
