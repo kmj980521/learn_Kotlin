@@ -442,76 +442,101 @@ fun main(){
 ---
 
 
-# Chapter92
+# Chapter92 - lateinit
 <details><summary>주요 내용
 </summary>
 
 
+## lateinit
+  
+- **lateinit 키워드** 가 붙은 프로퍼티는 클래스 안에서 바로 초기화하지 않아도 된다 
 
+- **lateinit 키워드는 var 키워드에서만 가능하다**
   
+```kotlin
   
+  class Rect{
+    lateinit var pt:Point
+    lateinit var pt2:Point
+
+    val width: Int get() = pt2.x - pt.x
+    val height: Int get() = pt2.y - pt.y
+    val area get() = width * height
+}
+
+fun main(){
+    val rect = Rect()
+    rect.pt = Point(3,3)
+    rect.pt2 = Point(6,5)
+
+    println("너비: ${rect.width}")
+    println("높이: ${rect.height}")
+    println("넓이:${rect.area}")
+}
+  
+```  
+  
+- lateinit 프로퍼티가 초기화되었는지 여부를 확인하는 방법  
+  
+```kotlin
+  if(rect::pt.isInitialized) {}
+```  
   
 </details>
 
 ---
 
 
-# Chapter93
+# Chapter93 - Nullable 리시버
 <details><summary>주요 내용
 </summary>
 
 
+## Nullable 리시버
+  
+```kotlin
+  
+fun String?.isNumber(){ // 리시버 타입에 ?가 붙어 있고 이것이 Nullable 리시버 
+    if(this==null)
+        println("문자열이 null입니다")
+}
 
+fun main(){
+    val empty : String ? = null
+    empty.isNumber() 
+}
   
+```  
   
+- 확장 함수의 리시버 타입이 Nullable이기 때문에, 표현식의 값이 null이어도 확장 함수를 호출할 수 있다   
   
 </details>
 
 ---
 
 
-# Chapter94
+# Chapter94 - 동반자 객체의 확장 함수
 <details><summary>주요 내용
 </summary>
 
+## 동반자 객체의 확장 함수 
 
-
+```kotlin
   
+ fun 클래스 이름.Companion.함수 이름()
   
+```  
   
-</details>
-
-
-
-
----
-
-
-# Chapter95
-<details><summary>주요 내용
-</summary>
-
-
-
+- 동반자 객체는 클래스 이름만으로 접근할 수 있지만, 확장 함수를 선언할 때 그렇게 하면 동반자 객체가 아닌 클래스 자체에 멤버 함수가 추가되므로 식별자를 반드시 적어준다 
   
+```kotlin
   
+class Person { companion object}
+fun Person.Companion.create() = Person
+
+fun main() = Person.create()
   
-</details>
-
-
-
-
-
----
-
-
-# Chapter96
-<details><summary>주요 내용
-</summary>
-
-
-
-  
+```  
   
   
 </details>
@@ -519,18 +544,17 @@ fun main(){
 
 
 
-
 ---
 
 
-# Chapter97
+# Chapter95 - 확장 함수의 리시버 타입이 상속 관계에 있을 때
 <details><summary>주요 내용
 </summary>
 
 
-
+## 확장 함수의 리시버 타입이 상속 관계에 있을 때
   
-  
+- 확장 함수는 멤버 함수와는 다르게 **참조 변수가 실제로 가리키는 객체의 타입을 따르지 않고, 참조 변수의 타입을 그대로 따른다**  
   
 </details>
 
@@ -541,12 +565,91 @@ fun main(){
 ---
 
 
-# Chapter98
+# Chapter96 - 추상 클래스(Abstract Class)
 <details><summary>주요 내용
 </summary>
 
 
+## 추상 클래스(Abstract Class)
+  
+- 공통되는 멤버를 전파하는 용도로 쓴다   
+  
+  
+- 클래스를 추상 클래스로 만드려면, 클래스 선언 맨 앞에 **abstract 키워드** 를 붙인다
 
+- 추상 클래스는 일부 멤버의 내용이 비어있는 불완전한 클래스이기 때문에 객체를 생성할 수 없다 
+  
+- abstract 키워드는 그 자체로 **open 키워드를 포함하고 있다**
+  
+</details>
+
+
+
+
+
+---
+
+
+# Chapter97 - 인터페이스(Interface)
+<details><summary>주요 내용
+</summary>
+
+
+## 인터페이스(Interface)
+  
+- 클래스에 어떤 멤버 함수와 프로퍼티가 **반드시 존재한다는 것을 보장하기 위한 장치**  
+  
+  
+```kotlin
+  
+interface Printalbe{
+    fun print():Unit
+}
+
+class A1 : Printalbe
+{
+    override fun print() {
+        println("Hello A")
+    }
+}
+fun print(anything:Printalbe)
+{
+    anything.print()
+}
+
+
+
+fun main(args:Array<String>){
+    print(A1())
+}
+  
+```  
+  
+- 인터페이스는 멤버 함수, 추상 멤버 함수, 추상 프로퍼티를 가질 수 있고, **일반 프로퍼티와 생성자는 가질 수 없다**
+  
+- 인터페이스 안의 멤버 함수는 내용이 비어있으면 자동으로 abstract가 붙는다 
+  
+- 인터페이스는 생성자가 존재하지 않기 때문에 **상속할 때 이름 옆에 ()를 쓰지 않는다** 
+  
+- 인터페이스 안에 있는 추상 멤버 함수는 모두 구현을 해야 한다 
+  
+- 인터페이스는 어떤 클래스에 플러그인을 추가한다는 개념에 가깝다 
+  
+  
+</details>
+
+
+
+
+
+---
+
+
+# Chapter98 - 다이아몬드 문제(The Diamond Problem)
+<details><summary>주요 내용
+</summary>
+
+## 다이아몬드 문제(The Diamond Problem)
   
   
   
@@ -557,14 +660,36 @@ fun main(){
 ---
 
 
-# Chapter99
+# Chapter99 - 중첩 클래스(Nested Class)
 <details><summary>주요 내용
 </summary>
 
 
+## 중첩 클래스(Nested Class)
+ 
+- 클래스 안에 또 다른 클래스 
+  
+```kotlin
+  
+class Outer
+{
+    private val property:Int = 16
+    class Nested{
+        fun hello() = println("중첩된 클래스")
+        //println(property) // error
+    }
+}
+fun main(args:Array<String>)
+{
+    val instance : Outer.Nested = Outer.Nested()
+    instance.hello()
+}
+  
+```  
 
+- 내부에 있는 클래스는 실제로는 완전히 분리된 장소에 있다 
   
-  
+- Outer의 인스턴스와 Outer.Nested의 인스턴스는 서로 어떠한 프로퍼티나 멤버 함수도 공유하지 않는다 
   
 </details>
 
@@ -578,7 +703,43 @@ fun main(){
 </summary>
 
 
+## 내부 클래스(Inner Class)
+  
+- 인스턴스가 바깥 클래스의 **인스턴스에 완전히 소속된다** 
+  
+- **inner 키워드** 를 붙인다 
+  
+```kotlin
+  
+class Outer2(private val value:Int)
+{
+    fun print(){
+        println(this.value)
+    }
 
+    inner class Inner(private val innerValue:Int)
+    {
+        fun print(){
+            this@Outer2.print()
+            println(this.innerValue + this@Outer2.value)
+        }
+    }
+}
+fun main(args:Array<String>)
+{
+    val instance : Outer2 = Outer2(610)
+    val innerInstance: Outer2.Inner = instance.Inner(40)
+    innerInstance.print()
+}
+  
+```  
+  
+- 내부 클래스의 인스턴스를 생성하려면 반드시 **바깐 클래스부터 인스턴스를 생성** 하고 ** 참조 변수.생성자()** 를 해야 한다 
+  
+- **해당 코드에서는 this@Outer2 이다** 
+  
+- ** this@Outer 키워드** 를 이용하여 자신이 속한 바깐 클래스의 인스턴스에 접근할 수 있다 
+  
   
   
   
